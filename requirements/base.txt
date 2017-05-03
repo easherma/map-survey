@@ -33,6 +33,8 @@ django-allauth==0.32.0
 # On Windows, you must download/install psycopg2 manually
 # from http://www.lfd.uci.edu/~gohlke/pythonlibs/#psycopg
 
+# Python-PostgreSQL Database Adapter
+psycopg2==2.6.2
 
 # Unicode slugification
 awesome-slugify==1.6.5
