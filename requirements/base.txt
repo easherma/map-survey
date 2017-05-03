@@ -44,6 +44,8 @@ pytz==2017.2
 django-redis==4.8.0
 redis>=2.10.5
 
+#leaflet plugin for maps
+django-leaflet>=0.22.0
 
 
 
