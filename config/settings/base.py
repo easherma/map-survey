@@ -37,6 +37,8 @@ DJANGO_APPS = [
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    #gis
+    'django.contrib.gis',
 
     # Useful template tags:
     # 'django.contrib.humanize',
@@ -49,7 +51,8 @@ THIRD_PARTY_APPS = [
     'allauth',  # registration
     'allauth.account',  # registration
     'allauth.socialaccount',  # registration
-    'leaflet' #maps
+    'leaflet', #maps
+    'djgeojson'
 ]
 
 # Apps specific for this project go here.
@@ -57,6 +60,7 @@ LOCAL_APPS = [
     # custom users app
     'map-survey.users.apps.UsersConfig',
     # Your stuff: custom apps go here
+    'map-survey.geopolls.apps.GeopollsConfig'
 ]
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
@@ -109,8 +113,12 @@ MANAGERS = ADMINS
 # DATABASE CONFIGURATION
 # ------------------------------------------------------------------------------
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#databases
+
 DATABASES = {
-    'default': env.db('DATABASE_URL', default='postgres://localhost/map-survey'),
+    'default': {
+        'DATABASE_URL': 'postgres://localhost/map-survey',
+        'ENGINE': 'django.contrib.gis.db.backends.postgis',
+    },
 }
 DATABASES['default']['ATOMIC_REQUESTS'] = True
 
