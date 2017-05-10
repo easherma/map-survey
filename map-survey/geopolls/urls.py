@@ -1,19 +1,10 @@
 from django.conf.urls import url
-# from geopolls.views import points_view
-from djgeojson.views import GeoJSONLayerView
-from .models import Submission
-
+from geopolls.views import SubmissionCreate
 
 urlpatterns = [
-    # url(r'^points.data/', points_view, name='points'),
-    url(r'^data.geojson$', GeoJSONLayerView.as_view(model=Submission), name='data'),
+    # ...
+    url(r'submission/add/$', SubmissionCreate, name='submission-add'),
+    # url(r'author/(?P<pk>[0-9]+)/$', AuthorUpdate.as_view(), name='author-update'),
+    # url(r'author/(?P<pk>[0-9]+)/delete/$', AuthorDelete.as_view(), name='author-delete'),
 ]
-
-# urlpatterns = [
-#     url(
-#         regex=r'^(?P<map>[\w.@+-]+)/$',
-#         view=views.points_view.as_view(),
-#         name='points'
-#     ),
-#
-# ]
+# url(r'^(?P<question_id>[0-9]+)/vote/$', views.vote, name='vote'),
