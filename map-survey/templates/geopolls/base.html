@@ -1,6 +1,113 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
-{% load leaflet_tags %}
-{% leaflet_map "map" %}
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/esri-leaflet@2.0.8"></script>
+    <script src="https://cdn.jsdelivr.net/leaflet.esri.renderers/2.0.4/esri-leaflet-renderers.js"></script>
+
+
+
+<!--      /Mapbox-->
+<!--      Leaflet.draw-->
+      <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/leaflet.draw/0.4.9/leaflet.draw.css"/>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/leaflet.draw/0.4.9/leaflet.draw.js"></script>
+<!--       /Leaflet.draw-->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
+
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+<!--      Geolocate Button-->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/leaflet.locatecontrol/0.52.0/L.Control.Locate.mapbox.min.css">
+    <script src="//cdn.jsdelivr.net/leaflet.locatecontrol/0.52.0/L.Control.Locate.min.js"></script>
+<!--      /Geolocate Button-->
+<link rel="stylesheet" href="https://unpkg.com/esri-leaflet-geocoder@2.2.4/dist/esri-leaflet-geocoder.css">
+<script src="https://unpkg.com/esri-leaflet-geocoder@2.2.4"></script>
+
+<!--      QGIS Webmap-->
+        <!-- <link rel="stylesheet" href="css/label.css" />
+        <script src="js/label.js"></script> -->
+<!--      /QGIS Webmap-->
+<!--      Impromptu (for walkthrough)-->
+
+<link href="{% static 'css/style.css' %}" rel="stylesheet">
+<link href="{% static 'css/jquery-impromptu.css' %}" rel="stylesheet">
+
+    <div id="map" title=""></div>
+<!-- {% load leaflet_tags %}
+{% leaflet_map "map" %} -->
+
+<div id="dialogGlobal" title="About You">
+  <form>
+    <fieldset style="border: none;">
+      <ul style="list-style-type: none; padding-left: 0px">
+        <li><label for="orgname">Organization</label></li>
+        <li><input type="text" name="orgname" id="orgname" placeholder="Enter your associated organization" pattern="[A-Za-z]{3,}" title="Your first name must be at least 3 letters" class="text ui-widget-content ui-corner-all"></li>
+        <li><label for="username">Name</label></li>
+        <li><input type="text" name="username" id="username" placeholder="Enter your name" pattern="[A-Za-z]{3,}" title="Your first name must be at least 3 letters" class="text ui-widget-content ui-corner-all" required></li>
+        <li><label for="email">Email</label></li>
+        <li><input type="email" name="email" id="email" placeholder="Enter your email"  title="Your email must be valid" class="text ui-widget-content ui-corner-all" required></li>
+        <!-- <li><label for="password">Password</label></li>
+        <li><input type="text" name="password" maxlength="5" pattern="[0-9]{5}" id="password" title="Please enter a password" placeholder="02134" class="text ui-widget-content ui-corner-all" required></li> -->
+      </ul>
+    </fieldset>
+  </form>
+</div>
+
+<div id="dialog" title="Tell Us About This">
+  <form>
+    <fieldset style="border: none;">
+      <ul style="list-style-type: none; padding-left: 0px">
+        <li><label for="description">About this</label></li>
+          <li><textarea type="text" name="description" id="description" rows="3" placeholder="Description for this" class="text ui-widget-content ui-corner-all"></textarea></li>
+      </ul>
+      <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
+    </fieldset>
+  </form>
+</div>
+
+<!-- Interaction buttons template (top left) -->
+<script id="hidden-interaction-buttons-template" type="text/x-custom-template">
+
+    <span style="font-size:x-large"><div id="add-route" class="circle type1 icon-hover tooltip" title="Draw routes on the map where you want improved infrastructure">
+        <i class="fa fa-pencil fa-3x fa-inverse" style="margin-top: 10px;"></i>
+    </div></span>
+    <div id="add-point" class="circle type1 icon-hover tooltip" title="Add points to the map where you want improved infrastructure">
+        <i class="fa fa-map-marker fa-inverse fa-3x" style="margin-top: 5px;"></i>
+    </div><br>
+    &emsp;<div id="about" class="circle type1 icon-hover tooltip" title="Learn more">
+        <i class="fa fa-info fa-3x fa-inverse" style="margin-top: 5px;"></i>
+    </div>	<br>
+    &emsp;<div id="cancel" class="circle type1 icon-hover tooltip" title="Cancel drawing" style="inline-block">
+        <i class="fa fa-times fa-3x fa-inverse" style="margin-top: 5px;"></i>
+    </div>
+    <div id="save" class="circle type1 icon-hover tooltip" title="Save Route" style="inline-block">
+    <i class="fa fa-floppy-o fa-3x fa-inverse" style="margin-top: 5px;"></i></div>
+
+</script>
 {% endblock %}
+{% block javascript %}
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
+<script src="{% static 'js/jquery-impromptu.min.js' %}"></script>
+<script src="{% static 'js/definitions.js' %}"></script>
+<script src="{% static 'js/data/counties.js' %}"></script>
+<script src="{% static 'js/data/nhfn.js' %}"></script>
+<script src="{% static 'js/data/intermodal_conn.js' %}"></script>
+<script src="{% static 'js/data/rpa.js' %}"></script>
+<script src="{% static 'js/userconfig.js' %}"></script>
+<script src="{% static 'js/layerstyle.js' %}"></script>
+<script src="{% static 'js/getSubmissions.js' %}"></script>
+<script src="{% static 'js/mapstyle.js' %}"></script>
+<script src="{% static 'js/directions.js' %}"></script>
+<script src="{% static 'js/draw.js' %}"></script>
+<script src="{% static 'js/label.js' %}"></script>
+
+
+{% endblock javascript %}
