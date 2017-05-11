@@ -51,6 +51,7 @@ THIRD_PARTY_APPS = [
     'allauth.socialaccount',  # registration
     'leaflet', #maps
     'rest_framework',
+    'djgeojson',
 ]
 
 # Apps specific for this project go here.
