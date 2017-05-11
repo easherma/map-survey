@@ -1,9 +1,10 @@
 from django.conf.urls import url, include
 from rest_framework import routers
-from mapsurvey.api import views
+from api import views
 
 router = routers.DefaultRouter()
 router.register(r'submissions', views.SubmissionViewSet)
+router.register(r'user', views.UserViewSet)
 
 urlpatterns = [
     url(r'^', include(router.urls)),

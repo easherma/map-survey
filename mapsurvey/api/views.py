@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from geopolls.models import Submission
-from users.models import User, Group
+from mapsurvey.users.models import User
 from rest_framework import viewsets
 from .serializers import SubmissionSerializer, UserSerializer
 

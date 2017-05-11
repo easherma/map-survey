@@ -7,6 +7,8 @@ from django.utils.translation import ugettext_lazy as _
 
 @python_2_unicode_compatible
 class User(AbstractUser):
+    # class Meta:
+    #     app_label = 'User'
 
     # First Name and Last Name do not cover name patterns
     # around the globe.
