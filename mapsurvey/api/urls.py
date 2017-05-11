@@ -1,7 +1,6 @@
 from django.conf.urls import url, include
 from rest_framework import routers
-map_survey = __import__('map-survey')
-# from map_survey.api import views
+from mapsurvey.api import views
 
 router = routers.DefaultRouter()
 router.register(r'submissions', views.SubmissionViewSet)

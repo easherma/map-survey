@@ -1,9 +1,9 @@
-.. django-map-survey documentation master file, created by
+.. django-mapsurvey documentation master file, created by
    sphinx-quickstart.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to django-map-survey's documentation!
+Welcome to django-mapsurvey's documentation!
 ====================================================================
 
 Contents:

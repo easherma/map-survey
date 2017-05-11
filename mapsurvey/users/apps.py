@@ -2,7 +2,7 @@ from django.apps import AppConfig
 
 
 class UsersConfig(AppConfig):
-    name = 'map-survey.users'
+    name = 'mapsurvey.users'
     verbose_name = "Users"
 
     def ready(self):
