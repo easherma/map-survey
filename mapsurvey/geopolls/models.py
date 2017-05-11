@@ -1,5 +1,6 @@
-from django.db import models
+from django.contrib.gis.db import models
 from djgeojson.fields import GeometryField
+
 
 
 # Create your models here.
@@ -10,4 +11,4 @@ class Submission(models.Model):
     email = models.EmailField(('Email'), blank=True, max_length=255)
     description = models.CharField('description', max_length=255, null = True,  blank=True)
     #geodjango geometry field
-    geom = GeometryField()
+    geom = models.GeometryField()
