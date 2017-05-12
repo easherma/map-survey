@@ -1,7 +1,7 @@
 FROM python:3.5
 ENV PYTHONUNBUFFERED 1
 
-# Update and install packages recomended by Django documentation:
+# Update and install packages recommended by Django documentation:
 # https://docs.djangoproject.com/ja/1.9/ref/contrib/gis/install/geolibs/
 # and extra needed packages
 RUN apt-get update -y && \

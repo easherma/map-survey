@@ -121,10 +121,10 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'django.contrib.gis.db.backends.postgis',
-        'NAME': 'map-survey',
+        'NAME': 'mapsurvey',
         'USER': 'postgres',
         'PASSWORD': '1MoreTime!',
-        'HOST': '127.0.0.1',
+        'HOST': 'postgres',
         'PORT': '5432',
     }
 }
