@@ -1,11 +1,10 @@
-version: '2'
-
+version: '3'
 volumes:
   postgres_data: {}
   postgres_backup: {}
-
 services:
   postgres:
+    image: easherma/mapsurvey_postgres:latest
     build: ./compose/postgres
     volumes:
       - postgres_data:/var/lib/postgresql/data
@@ -13,6 +12,7 @@ services:
     env_file: .env
 
   django:
+    image: easherma/mapsurvey_django:latest
     build:
       context: .
       dockerfile: ./compose/django/Dockerfile
@@ -23,6 +23,7 @@ services:
     env_file: .env
 
   nginx:
+    image: easherma/mapsurvey_ngnix:latest
     build: ./compose/nginx
     depends_on:
       - django
@@ -33,4 +34,3 @@ services:
 
   redis:
     image: redis:3.0
-
