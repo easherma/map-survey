@@ -27,6 +27,7 @@ services:
     build: ./compose/nginx
     depends_on:
       - django
+    # VIRTUAL_HOST=mapsurvey.com
 
     ports:
       - "0.0.0.0:80:80"
