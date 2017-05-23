@@ -1,5 +1,5 @@
 """
-WSGI config for django-map-survey project.
+WSGI config for django-mapsurvey project.
 
 This module contains the WSGI application used by Django's development server
 and any production WSGI deployments. It should expose a module-level variable
@@ -19,9 +19,9 @@ import sys
 from django.core.wsgi import get_wsgi_application
 
 # This allows easy placement of apps within the interior
-# map-survey directory.
+# mapsurvey directory.
 app_path = os.path.dirname(os.path.abspath(__file__)).replace('/config', '')
-sys.path.append(os.path.join(app_path, 'map-survey'))
+sys.path.append(os.path.join(app_path, 'mapsurvey'))
 
 if os.environ.get('DJANGO_SETTINGS_MODULE') == 'config.settings.production':
     from raven.contrib.django.raven_compat.middleware.wsgi import Sentry

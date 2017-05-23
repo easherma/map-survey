@@ -5,6 +5,7 @@ from django.contrib import admin
 from django.views.generic import TemplateView
 from django.views import defaults as default_views
 
+
 urlpatterns = [
     url(r'^$', TemplateView.as_view(template_name='pages/home.html'), name='home'),
     url(r'^about/$', TemplateView.as_view(template_name='pages/about.html'), name='about'),
@@ -14,10 +15,14 @@ urlpatterns = [
     url(settings.ADMIN_URL, admin.site.urls),
 
     # User management
-    url(r'^users/', include('map-survey.users.urls', namespace='users')),
+    url(r'^users/', include('mapsurvey.users.urls', namespace='users')),
     url(r'^accounts/', include('allauth.urls')),
 
     # Your stuff: custom urls includes go here
+    url(r'^api/', include('api.urls')),
+
+
+    url(r'^map/', include('geopolls.urls')),
 
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

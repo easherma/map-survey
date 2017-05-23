@@ -6,7 +6,7 @@ wheel==0.29.0
 
 
 # Bleeding edge Django
-django==1.10.7 # pyup: >=1.10,<1.11
+django==1.10 # pyup: >=1.10,<1.11
 
 # Configuration
 django-environ==0.4.3
@@ -34,7 +34,7 @@ django-allauth==0.32.0
 # from http://www.lfd.uci.edu/~gohlke/pythonlibs/#psycopg
 
 # Python-PostgreSQL Database Adapter
-psycopg2==2.6.2
+psycopg2==2.7.1
 
 # Unicode slugification
 awesome-slugify==1.6.5
@@ -53,3 +53,8 @@ django-leaflet>=0.22.0
 
 
 # Your custom requirements go here
+djangorestframework==3.6.2
+djangorestframework-gis==0.11.1
+django-geojson==2.10.0
+jsonfield==2.0.1
+django-cors-headers==2.0.2

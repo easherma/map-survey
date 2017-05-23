@@ -62,10 +62,12 @@ X_FRAME_OPTIONS = 'DENY'
 # ------------------------------------------------------------------------------
 # Hosts/domain names that are valid for this site
 # See https://docs.djangoproject.com/en/dev/ref/settings/#allowed-hosts
-ALLOWED_HOSTS = env.list('DJANGO_ALLOWED_HOSTS', default=['osgisomg.com', ])
-# END SITE CONFIGURATION
+ALLOWED_HOSTS = env.list('DJANGO_ALLOWED_HOSTS')
+
+ALLOWED_HOSTS = ['localhost']
 
 INSTALLED_APPS += ['gunicorn', ]
+
 
 
 # STORAGE CONFIGURATION
@@ -106,8 +108,8 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # EMAIL
 # ------------------------------------------------------------------------------
 DEFAULT_FROM_EMAIL = env('DJANGO_DEFAULT_FROM_EMAIL',
-                         default='django-map-survey <noreply@osgisomg.com>')
-EMAIL_SUBJECT_PREFIX = env('DJANGO_EMAIL_SUBJECT_PREFIX', default='[django-map-survey]')
+                         default='django-mapsurvey <noreply@osgisomg.com>')
+EMAIL_SUBJECT_PREFIX = env('DJANGO_EMAIL_SUBJECT_PREFIX', default='[django-mapsurvey]')
 SERVER_EMAIL = env('DJANGO_SERVER_EMAIL', default=DEFAULT_FROM_EMAIL)
 
 # Anymail with Mailgun
