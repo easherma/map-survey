@@ -24,7 +24,7 @@ if READ_DOT_ENV_FILE:
     # as environment variables.
     env_file = str(ROOT_DIR.path('.env'))
     print('Loading : {}'.format(env_file))
-    env.read_env(env_file)
+    # env.read_env(env_file)
     print('The .env file has been loaded. See base.py for more information')
 
 # APP CONFIGURATION
@@ -120,17 +120,8 @@ MANAGERS = ADMINS
 #     'default': env.db('DATABASE_URL', default='postgres://localhost/mapsurvey'),
 # }
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.contrib.gis.db.backends.postgis',
-        'NAME': 'mapsurvey',
-        'USER': 'postgres',
-        'PASSWORD': '1MoreTime!',
-        'HOST': 'postgres',
-        'PORT': '5432',
-    }
-}
-DATABASES['default']['ATOMIC_REQUESTS'] = True
+
+
 
 # GENERAL CONFIGURATION
 # ------------------------------------------------------------------------------

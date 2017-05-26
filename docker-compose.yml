@@ -4,12 +4,14 @@ volumes:
   postgres_backup: {}
 services:
   postgres:
-    image: easherma/mapsurvey_postgres:latest
+    # image: easherma/mapsurvey_postgres:latest
     build: ./compose/postgres
     volumes:
       - postgres_data:/var/lib/postgresql/data
       - postgres_backup:/backups
     env_file: .env
+    environment:
+        - POSTGRES_DB=mapsurvey
 
   django:
     image: easherma/mapsurvey_django:latest
