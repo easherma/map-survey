@@ -25,7 +25,7 @@ services:
     env_file: .env
 
   nginx:
-    image: easherma/mapsurvey_ngnix:latest
+    # image: ngnix:latest
     build: ./compose/nginx
     depends_on:
       - django
@@ -33,7 +33,7 @@ services:
 
     ports:
       - "0.0.0.0:80:80"
-
+      - "443:443"
 
   redis:
     image: redis:3.0
