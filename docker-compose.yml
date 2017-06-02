@@ -4,7 +4,7 @@ volumes:
   postgres_backup: {}
 services:
   postgres:
-    # image: easherma/mapsurvey_postgres:latest
+    image: easherma/mapsurvey_postgres:latest
     build: ./compose/postgres
     volumes:
       - postgres_data:/var/lib/postgresql/data
@@ -25,7 +25,7 @@ services:
     env_file: .env
 
   nginx:
-    # image: ngnix:latest
+    image: easherma/ngnix:latest
     build: ./compose/nginx
     depends_on:
       - django
