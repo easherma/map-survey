@@ -1,0 +1,25 @@
+{
+  "AWSEBDockerrunVersion": 2,
+  "family": "build_env",
+  "containerDefinitions": [
+    {
+      "name": "django",
+      "image": "easherma/mapsurvey_django:latest",
+      "memory": 4096
+    },
+    {
+      "name": "nginx",
+      "image": "ngnix:latest>",
+      "memory": 1024,
+      "portMappings": [
+        {
+          "hostPort": 80,
+          "containerPort": 80
+        }
+      ],
+      "links": [
+        "django"
+      ]
+    }
+  ]
+}
