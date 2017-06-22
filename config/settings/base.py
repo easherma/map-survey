@@ -116,10 +116,17 @@ MANAGERS = ADMINS
 # DATABASE CONFIGURATION
 # ------------------------------------------------------------------------------
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#databases
-# DATABASES = {
-#     'default': env.db('DATABASE_URL', default='postgres://localhost/mapsurvey'),
-# }
 
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.contrib.gis.db.backends.postgis',
+        'NAME': 'mapsurvey',
+        'USER': 'postgres',
+        'PASSWORD': '1MoreTime!',
+        'HOST': 'postgres',
+        'PORT': '5432',
+    }
+}
 
 
 

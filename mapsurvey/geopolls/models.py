@@ -1,5 +1,5 @@
 from django.contrib.gis.db import models
-from djgeojson.fields import GeometryField
+# from djgeojson.fields import GeometryField
 
 
 

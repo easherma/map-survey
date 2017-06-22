@@ -1,8 +1,10 @@
+# from django.contrib.gis import forms
 from django import forms
 from leaflet.forms.widgets import LeafletWidget
+from .models import Submission
+
 
 class SubmissionForm(forms.ModelForm):
-
     class Meta:
         model = Submission
         fields = ('name', 'geom', 'description', 'org', 'email')

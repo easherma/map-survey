@@ -1,0 +1,32 @@
+{% extends "geopolls/base.html" %}
+{% load static %}
+{% load leaflet_tags %}
+{% block content %}
+
+  <head>
+      {% leaflet_js plugins="ALL" %}
+      {% leaflet_css plugins="ALL" %}
+
+  </head>
+
+    <h1>Submissions</h1>
+    <div>{% leaflet_map "main" callback="main_map_init" %}></div>
+
+{% endblock %}
+{% block javascript %}
+{block.super}
+
+    <script type="text/javascript" defer="defer">
+        function main_map_init (map, options) {
+            var dataurl = '{% url "data" %}';
+            // Download GeoJSON via Ajax
+            $.getJSON(dataurl, function (data) {
+                console.log(data);
+                // Add GeoJSON layer
+                L.geoJson(data).addTo(map);
+            });            // Use Leaflet API here
+        }
+    </script>
+
+
+{% endblock %}

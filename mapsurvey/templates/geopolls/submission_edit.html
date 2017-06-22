@@ -1,0 +1,18 @@
+{% extends "geopolls/base.html" %}
+{% load leaflet_tags %}
+{% block content %}
+<html>
+  <head>
+   {% leaflet_js plugins="ALL" %}
+   {% leaflet_css plugins="ALL" %}
+  </head>
+  <body>
+    <h1>Edit {{ object }}</h1>
+    <form action="POST" class="post-form">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="save btn btn-default">Save</button>
+    </form>
+  </body>
+</html>
+{% endblock %}
