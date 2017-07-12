@@ -62,8 +62,5 @@ node_modules/
 mapsurvey/media/
 
 
-
-staticfiles/
-
 .cache/
 
