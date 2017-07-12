@@ -23,7 +23,12 @@
   <div class="col-sm-12">
     <a class="btn btn-primary" href="{% url 'users:update' %}" role="button">My Info</a>
     <a class="btn btn-primary" href="{% url 'account_email' %}" role="button">E-Mail</a>
+
     <!-- Your Stuff: Custom user template urls -->
+    <a class="btn btn-primary" href="{% url 'submissions' %}" role="button">Submissions</a>
+    <a class="btn btn-primary" href="{% url 'submission_new' %}" role="button">New Submissions</a>
+
+
   </div>
 
 </div>
@@ -33,4 +38,3 @@
 
 </div>
 {% endblock content %}
-
