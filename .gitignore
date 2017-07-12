@@ -63,7 +63,7 @@ mapsurvey/media/
 
 
 
-staticfiles/
+#staticfiles/
 
 .cache/
 
