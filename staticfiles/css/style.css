@@ -33,7 +33,7 @@ tr:nth-child(even) {
 
 .circle {
     border-radius: 50%;
-    behavior: url(PIE.htc);
+
 }
 .type1 {
     padding: 5px;
