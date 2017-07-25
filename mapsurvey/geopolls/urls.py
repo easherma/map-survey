@@ -4,6 +4,8 @@ from djgeojson.views import GeoJSONLayerView
 from .models import Submission
 from . import views
 from django.views.generic import TemplateView
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     url(r'^submissions/new/$', views.submission_new, name='submission_new'),
@@ -15,4 +17,3 @@ urlpatterns = [
     # url(r'author/(?P<pk>[0-9]+)/$', AuthorUpdate.as_view(), name='author-update'),
     # url(r'author/(?P<pk>[0-9]+)/delete/$', AuthorDelete.as_view(), name='author-delete'),
 ]
-# url(r'^(?P<question_id>[0-9]+)/vote/$', views.vote, name='vote'),

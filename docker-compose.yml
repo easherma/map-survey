@@ -4,7 +4,8 @@ volumes:
   postgres_backup: {}
 services:
   postgres:
-    # image: easherma/mapsurvey_postgres:latest
+    restart: always
+    image: easherma/mapsurvey_postgres:latest
     build: ./compose/postgres
     volumes:
       - postgres_data:/var/lib/postgresql/data
@@ -12,8 +13,11 @@ services:
     env_file: .env
     environment:
         - POSTGRES_DB=mapsurvey
+    ports:
+      - "5432:5432"
 
   django:
+    restart: always
     image: easherma/mapsurvey_django:latest
     build:
       context: .
@@ -23,16 +27,19 @@ services:
       - redis
     command: /gunicorn.sh
     env_file: .env
+    expose:
+      - "5000"
+    links:
+      - postgres
 
   nginx:
-    # image: ngnix:latest
+    image: ngnix:latest
     build: ./compose/nginx
     depends_on:
       - django
     # VIRTUAL_HOST=mapsurvey.com
-
     ports:
-      - "0.0.0.0:80:80"
+      - "80:80"
       - "443:443"
 
   redis:

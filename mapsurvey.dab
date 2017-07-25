@@ -1,0 +1,87 @@
+{
+  "Services": {
+    "django": {
+      "Args": [
+        "/gunicorn.sh"
+      ], 
+      "Env": [
+        "ENGINE= django.contrib.gis.db.backends.postgis", 
+        "DJANGO_AWS_SECRET_ACCESS_KEY=hm/Aqvbab/+sxx1OLjZc/pZXgzuO8CwaPqe3RorK", 
+        "POSTGRES_USER=postgres", 
+        "NAME= mapsurvey", 
+        "DJANGO_MAILGUN_SERVER_NAME=https://api.mailgun.net/v3/mail.osgisomg.com", 
+        "DJANGO_AWS_ACCESS_KEY_ID=AKIAJRCQBAWDJ7OMCPXQ", 
+        "POSTGRES_PASSWORD=1MoreTime!", 
+        "MAILGUN_SENDER_DOMAIN=mail.osgisomg.com", 
+        "DJANGO_ALLOWED_HOSTS=['*']", 
+        "DJANGO_ADMIN_URL=^admin/", 
+        "PORT= 5432", 
+        "DJANGO_SECURE_SSL_REDIRECT=False", 
+        "HOST= postgres", 
+        "DJANGO_SETTINGS_MODULE=config.settings.production", 
+        "USER= postgres", 
+        "DJANGO_MAILGUN_API_KEY=key-b5517be938c0e237fc548f61eaaf2767", 
+        "PASSWORD= 1MoreTime!", 
+        "DJANGO_ACCOUNT_ALLOW_REGISTRATION=True", 
+        "DJANGO_SECRET_KEY=Ogh@t!&PlZ[0f3xBK{ae7]7{!I3,<lW1N$Rx7]$l;viz0$S@c8", 
+        "DJANGO_AWS_STORAGE_BUCKET_NAME=mapsurvey-bucket"
+      ], 
+      "Image": "easherma/mapsurvey_django@sha256:647f1f6f981c75ce424b458e7e76ff5204c5ce13076e36d1bf63b9944997d514", 
+      "Networks": [
+        "default"
+      ]
+    }, 
+    "nginx": {
+      "Image": "easherma/ngnix@sha256:7c2ec75ad992bce3250ba39d40268d1e596d45cbdcb3a133adff8ccbe2a9e388", 
+      "Networks": [
+        "default"
+      ], 
+      "Ports": [
+        {
+          "Port": 80, 
+          "Protocol": "tcp"
+        }, 
+        {
+          "Port": 443, 
+          "Protocol": "tcp"
+        }
+      ]
+    }, 
+    "postgres": {
+      "Env": [
+        "ENGINE= django.contrib.gis.db.backends.postgis", 
+        "DJANGO_AWS_SECRET_ACCESS_KEY=hm/Aqvbab/+sxx1OLjZc/pZXgzuO8CwaPqe3RorK", 
+        "POSTGRES_USER=postgres", 
+        "NAME= mapsurvey", 
+        "DJANGO_MAILGUN_SERVER_NAME=https://api.mailgun.net/v3/mail.osgisomg.com", 
+        "DJANGO_AWS_ACCESS_KEY_ID=AKIAJRCQBAWDJ7OMCPXQ", 
+        "POSTGRES_PASSWORD=1MoreTime!", 
+        "MAILGUN_SENDER_DOMAIN=mail.osgisomg.com", 
+        "DJANGO_ALLOWED_HOSTS=['*']", 
+        "POSTGRES_DB=mapsurvey", 
+        "DJANGO_ADMIN_URL=^admin/", 
+        "PORT= 5432", 
+        "DJANGO_SECURE_SSL_REDIRECT=False", 
+        "HOST= postgres", 
+        "DJANGO_SETTINGS_MODULE=config.settings.production", 
+        "USER= postgres", 
+        "DJANGO_MAILGUN_API_KEY=key-b5517be938c0e237fc548f61eaaf2767", 
+        "PASSWORD= 1MoreTime!", 
+        "DJANGO_ACCOUNT_ALLOW_REGISTRATION=True", 
+        "DJANGO_SECRET_KEY=Ogh@t!&PlZ[0f3xBK{ae7]7{!I3,<lW1N$Rx7]$l;viz0$S@c8", 
+        "DJANGO_AWS_STORAGE_BUCKET_NAME=mapsurvey-bucket"
+      ], 
+      "Image": "easherma/mapsurvey_postgres@sha256:6d2ec25432c4db5fb867000de11cee4fa3f174551680e4a8fff02cac2d9a9e30", 
+      "Networks": [
+        "default"
+      ]
+    }, 
+    "redis": {
+      "Image": "redis@sha256:951b48deb6d370e51ce0fcf9af6750860d45d45ce63722eafcddac6df4f991fb", 
+      "Networks": [
+        "default"
+      ]
+    }
+  }, 
+  "Version": "0.1"
+}
