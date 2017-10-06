@@ -1,4 +1,4 @@
-django-mapsurvey
+map-survey backend tool 
 =================
 
 geospatial survey tool based on django
